@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vice Cover Studio — turn your photo into neon-sunset cover art</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<main class="app">
+  <section class="controls" aria-label="Cover controls">
+    <header>
+      <h1>Vice Cover Studio</h1>
+      <p>Your photo, a caption, and a neon sunset — a poster-style cover in seconds. Everything runs offline; your photos never leave this machine.</p>
+    </header>
+
+    <fieldset>
+      <legend>1 · Photos</legend>
+      <label class="file-label">Add your photos
+        <input id="photo" type="file" accept="image/*" multiple>
+      </label>
+      <div class="samples" id="samples" aria-label="Sample photos"></div>
+      <p class="hint">Click a photo, then click a panel below to put it there. Drag the preview to move a photo inside its panel.</p>
+      <div class="panel-pick" id="panelPick" aria-label="Panels"></div>
+      <div class="row">
+        <button id="fillAll" type="button">Fill all panels with this photo</button>
+        <button id="resetFrame" type="button">Reset framing</button>
+      </div>
+      <label>Zoom <span id="zoomValue">100%</span>
+        <input id="zoom" type="range" min="1" max="3" step="0.01" value="1">
+      </label>
+    </fieldset>
+
+    <fieldset>
+      <legend>2 · Layout</legend>
+      <div class="choices" id="layouts"></div>
+    </fieldset>
+
+    <fieldset>
+      <legend>3 · Sunset grade</legend>
+      <div class="choices swatches" id="grades"></div>
+    </fieldset>
+
+    <fieldset>
+      <legend>4 · Caption</legend>
+      <label>Title
+        <input id="title" type="text" maxlength="24" value="Sunset Run">
+      </label>
+      <label>Subtitle
+        <input id="subtitle" type="text" maxlength="40" value="one last ride down the coast">
+      </label>
+      <div class="row">
+        <label>Title colour
+          <select id="titleColor">
+            <option value="#ffffff">White</option>
+            <option value="#ffd23e">Sun yellow</option>
+            <option value="#ff5ea8">Hot pink</option>
+          </select>
+        </label>
+        <label>Title position
+          <select id="titlePos">
+            <option value="bottom">Bottom</option>
+            <option value="top">Top</option>
+          </select>
+        </label>
+      </div>
+      <label class="check"><input id="grain" type="checkbox" checked> Film grain</label>
+      <label class="check"><input id="vignette" type="checkbox" checked> Vignette</label>
+    </fieldset>
+
+    <fieldset>
+      <legend>5 · Export PNG</legend>
+      <div class="row">
+        <label>Post size
+          <select id="size">
+            <option value="square">Square · 1080 × 1080</option>
+            <option value="portrait">Portrait · 1080 × 1350</option>
+            <option value="wide">Wide · 1920 × 1080</option>
+          </select>
+        </label>
+      </div>
+      <div class="row">
+        <button id="export" type="button" class="primary">Export this size</button>
+        <button id="exportAll" type="button">Export all three sizes</button>
+      </div>
+      <p id="status" role="status"></p>
+    </fieldset>
+  </section>
+
+  <section class="stage" aria-label="Live preview">
+    <canvas id="cover" width="1080" height="1080" aria-label="The cover preview"></canvas>
+    <p class="stage-hint">Drag the cover to move the selected panel&rsquo;s photo &middot; scroll to zoom it</p>
+  </section>
+</main>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
